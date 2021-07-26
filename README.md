@@ -31,7 +31,7 @@ nvm alias default 16
 nvm use default
 ```
 
-3. Go to any directory to be download the source code
+3. Go to the directory where the source code will be downloaded and run the service
 ```sh
 cd <working directory>
 git clone https://github.com/scala-network/nodes.git
