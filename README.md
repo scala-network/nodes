@@ -19,8 +19,7 @@ The other flavour we add in into this project is the ability to randomly pick a 
 ## How can I install this for my personal use?
 Below is the installation process for this service to be hosted
 
-### Install NVM
-1. Use the following cURL command to install into your system:
+1. Install nvm by using the following cURL command to install into your system:
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 ```
