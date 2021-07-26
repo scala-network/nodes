@@ -5,7 +5,7 @@ const http = require('http'),
     cluster = require('cluster'),
     fs = require('fs'),
     url = require('url'), 
-    port = 8000,
+    port = 11812,
     threads = 2;
 
 var log = console.log;
@@ -188,7 +188,7 @@ switch(parseInt(process.env.workerId)) {
               res.end(fs.readFileSync("favicon.ico"));
               return;
           }
-          if (req.url === '/') {
+          if (req.url === '/lists') {
                 res.writeHead(200, {'Content-Type': 'text/json'});
               res.end(JSON.stringify({nodes:avaliableTargets}));
               return;
