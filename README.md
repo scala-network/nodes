@@ -1,6 +1,6 @@
 # Public Node Repository
 
-This project is hosted at http://nodes.scalaproject.io:11812/. The propose of this project is to host nodes that are active for applications or system. Where contributors for the nodes will be credit. 
+This project is hosted at http://nodes.scalaproject.io:11812/. The propose of this project is to host nodes that are active for applications or system.
 
 
 ## How to get listed @ contribute?
