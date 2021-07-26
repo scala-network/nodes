@@ -14,7 +14,7 @@ The service currently is hosted at http://nodes.scalaproject.io:11812/. You can 
 
 ## Using node service for an rpc request
 
-The other flavour we add in into this project is the ability to randomly pick nodes to be use. This can be done by pointing your rpc requests to `nodes.scalaproject.io:11812`.
+The other flavour we add in into this project is the ability to randomly pick a node to be use. This can be done by pointing your rpc requests to `nodes.scalaproject.io:11812`.
 
 ## How can I install this for my personal use?
 Below is the installation process for this service to be hosted
