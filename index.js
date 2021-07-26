@@ -181,13 +181,23 @@ switch(parseInt(process.env.workerId)) {
 
   const init = () => {
         const proxy = httpProxy.createProxyServer({});
-
+      proxy.on('proxyReq', (proxyReq, req) => {
+              if (req.body) {
+                  const bodyData = JSON.stringify(req.body);
+                  // incase if content-type is application/x-www-form-urlencoded -> we need to change to application/json
+                  proxyReq.setHeader('Content-Type','application/json');
+                  proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+                  // stream the content
+                  proxyReq.write(bodyData);
+              }
+          });
         const server = http.createServer(function(req, res) {
           if (req.url === '/favicon.ico') {
               res.writeHead(200, {'Content-Type': 'image/x-icon'});            
               res.end(fs.readFileSync("favicon.ico"));
               return;
           }
+          console.log(req);
           if (req.url === '/lists') {
                 res.writeHead(200, {'Content-Type': 'text/json'});
               res.end(JSON.stringify({nodes:avaliableTargets}));
@@ -204,9 +214,7 @@ switch(parseInt(process.env.workerId)) {
           // }
 
           console.log("Request %s : %s", target, req.url);
-  
-          console.log();
-          proxy.web(req, res, {target:"http://"+target});
+            proxy.web(req, res, {target:"http://"+target});
         });
 
         server.on("error", err=>console.log(err));
