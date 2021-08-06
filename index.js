@@ -182,6 +182,10 @@ switch(parseInt(process.env.workerId)) {
 
   const init = () => {
       const proxy = httpProxy.createProxyServer({});
+      proxy.on('error', err => {
+          console.log("Proxy Request Error");
+          console.log(err);
+      });
       proxy.on('proxyReq', (proxyReq, req) => {
               if (req.body && req.complete) {
                   const bodyData = JSON.stringify(req.body);
@@ -217,7 +221,10 @@ switch(parseInt(process.env.workerId)) {
             proxy.web(req, res, {target:"http://"+target});
         });
 
-        server.on("error", err=>console.log(err));
+        server.on("error", err => {
+          console.log("Server Request Error");
+          console.log(err);
+        });
 
         console.log("listening on port %s", port)
         server.listen(port,"0.0.0.0");
