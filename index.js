@@ -14,19 +14,20 @@ console.log = function () {
     var other_parameters = Array.prototype.slice.call(arguments, 1);
 
     function formatConsoleDate (date) {
-        var hour = date.getHours();
-        var minutes = date.getMinutes();
-        var seconds = date.getSeconds();
-        var milliseconds = date.getMilliseconds();
-
+        // var hour = date.getHours();
+        // var minutes = date.getMinutes();
+        // var seconds = date.getSeconds();
+        // var milliseconds = date.getMilliseconds();
+        var datestamp = date.toISOString().split(".")[0];
         return '[' +
-               ((hour < 10) ? '0' + hour: hour) +
-               ':' +
-               ((minutes < 10) ? '0' + minutes: minutes) +
-               ':' +
-               ((seconds < 10) ? '0' + seconds: seconds) +
-               '.' +
-               ('00' + milliseconds).slice(-3) +
+               datestamp +
+               // ((hour < 10) ? '0' + hour: hour) +
+               // ':' +
+               // ((minutes < 10) ? '0' + minutes: minutes) +
+               // ':' +
+               // ((seconds < 10) ? '0' + seconds: seconds) +
+               // '.' +
+               // ('00' + milliseconds).slice(-3) +
                '] ';
     }
     const wid = cluster.isPrimary ? "" : `[WID: ${process.env.workerId}] `;
