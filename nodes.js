@@ -1,6 +1,7 @@
 const http = require('http');
 const httpProxy = require('http-proxy');
 const port = 11812;
+const fs = require('fs');
 
 let avaliableTargets = [];
 let errorRequest = true;
