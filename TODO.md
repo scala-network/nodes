@@ -9,3 +9,4 @@ Repository of scala public nodes.
 - [✓] Remove node from available if fail during request
 - [✓] Reduce calls to daemon for node status check
 - [✓] Reduce verbosity of log
+- [✓] Reconnect to other avaliable targets if current fails

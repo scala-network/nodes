@@ -27,8 +27,8 @@ const server = http.createServer(function(req, res) {
         return;
     }
 
-    const idx = Math.floor(Math.random() * (avaliableTargets.length-1));
-    const target = avaliableTargets[idx];
+    let idx = Math.floor(Math.random() * (avaliableTargets.length-1));
+    let target = avaliableTargets[idx];
 
     console.log("Request %s : %s", target, req.url);
 
@@ -39,6 +39,12 @@ const server = http.createServer(function(req, res) {
         if(!errorRequest) {
             errorRequest = true;
             process.send({type:'nodes:request'});
+        }
+
+        if(avaliableTargets.length > 0) {
+            idx = Math.floor(Math.random() * (avaliableTargets.length-1));
+            target = avaliableTargets[idx];
+            proxy.web(req, res, {target:"http://"+target});
         }
     });
 
