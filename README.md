@@ -10,7 +10,7 @@ You can create a pull request by adding your nodes to the this file [nodes.json]
 
 ## How does the service works?
 
-The service currently is hosted at http://nodes.scalaproject.io:11812/list. You can get the list of nodes by just going to the link it will return the list in json format. 
+The service currently is hosted at http://nodes.scalaproject.io:11812/lists. You can get the list of nodes by just going to the link it will return the list in json format. 
 
 ## Using node service for an rpc request
 
