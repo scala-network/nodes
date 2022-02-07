@@ -1,7 +1,11 @@
 # Scala Nodes
-Repository of scala public nodes
+Repository of scala public nodes.
 
-### Column Name
-- [ ] Remove node from available if fail during request
+### TODO
+- [ ] Port 11811 also to be proxied
 
-### Completed Column ✓
+### Completed ✓
+- [✓] Remove slow server requests
+- [✓] Remove node from available if fail during request
+- [✓] Reduce calls to daemon for node status check
+- [✓] Reduce verbosity of log
