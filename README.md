@@ -46,6 +46,6 @@ You can use termux or screen to run you code in the background
 ## Credits
 * [cryptoamity](https://github.com/ahmyi)
 * [hayzam](https://github.com/hayzamjs)
-
+* ethospool
 
 Sorry if I missed your names in the credits. Create a pull request we will add you in.
