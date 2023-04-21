@@ -29,14 +29,18 @@ const server = http.createServer(function(req, res) {
 
     let idx = Math.floor(Math.random() * (avaliableTargets.length-1));
     let target = avaliableTargets[idx];
-
+    console.log(req.headers);
     console.log("Request %s : %s", target, req.url);
+    res.writeHead(302, {
+	    location: "http://"+ target + req.url,
+    });
+    return res.end();
 
     const proxy = httpProxy.createProxyServer({});
     proxy.on('error', err => {
-        console.log("Proxy Request Error");
         delete avaliableTargets[idx];
         if(!errorRequest) {
+            console.log("Proxy Request Error " + idx);
             errorRequest = true;
             process.send({type:'nodes:request'});
         }
@@ -82,7 +86,9 @@ process.on('message', function(msg) {
       process.exit();
       break;
       case 'nodes:refresh':
-        errorRequest = false;
+        setTimeout(() => {
+		errorRequest = false;
+	},1000);
         if (!('targets' in msg) || compare(msg.targets, avaliableTargets)) return;
         if(avaliableTargets.length !== msg.targets.length) {
             console.log("We have nodes update (%s to %s) ", avaliableTargets.length, msg.targets.length)

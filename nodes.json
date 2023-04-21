@@ -7,6 +7,7 @@
 		"remote.one.scalaproject.io:11812",
 		"remote.two.scalaproject.io:11812",
 		"remote.three.scalaproject.io:11812",
-		"remote.four.scalaproject.io:11812"
+		"remote.four.scalaproject.io:11812",
+		"scala.fastnode.eu:11812"
 	]
 }

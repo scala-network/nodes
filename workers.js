@@ -6,12 +6,12 @@ const fs = require('fs');
 const checkInterval = 30000; //Check every 30 seconds
 
 let ti = null;
-
+const errorReporting = {};
 const requestService = urlString => {
 
     return new Promise((resolve, reject) => {
 
-        const parsedUrl = urlparser.parse("http://"+urlString+"/getinfo");
+        const parsedUrl = urlparser.parse("http://"+urlString+"/get_info");
 
         const request = http.get({
             hostname: parsedUrl.hostname,
@@ -40,10 +40,18 @@ const requestService = urlString => {
 
         // Implement timeout as we don't want to include slow servers
         request.on('socket',function(socket){
-          socket.setTimeout(2000,() => request.abort());
+          socket.setTimeout(30000,() => request.abort());
         });
 
-        request.on('error', reject);
+        request.on('error', e => {
+		if(urlString in errorReporting && errorReporting[urlString] === e.message){
+			reject(e);
+			return;
+		}
+		console.log("Error: " + urlString + " Message: " + e.message);
+		errorReporting[urlString] = e.message;
+		reject(e);
+	});
 
         request.end();
     });
